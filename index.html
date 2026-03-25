@@ -655,7 +655,7 @@
         // Countdown Timer
         function initCountdown() {
             // Random hours between 2-8 for urgency
-            let totalSeconds = Math.floor(Math.random() * 6 + 2) * 3600 + Math.floor(Math.random() * 60) * 60;
+            let totalSeconds = 24 * 3600; // 24 horas
             
             // Check localStorage for existing countdown
             const stored = localStorage.getItem('qbits_panaderia_countdown');
