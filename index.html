@@ -647,19 +647,20 @@
     <script>
         // Countdown Timer
         function initCountdown() {
-            // Random hours between 2-8 for urgency
             let totalSeconds = 24 * 3600; // 24 horas
+            const TIMER_VERSION = 'v2_24h';
             
-            // Check localStorage for existing countdown
             const stored = localStorage.getItem('qbits_panaderia_countdown');
             const storedTime = localStorage.getItem('qbits_panaderia_countdown_time');
+            const storedVersion = localStorage.getItem('qbits_panaderia_countdown_ver');
             
-            if (stored && storedTime) {
+            if (stored && storedTime && storedVersion === TIMER_VERSION) {
                 const elapsed = Math.floor((Date.now() - parseInt(storedTime)) / 1000);
                 totalSeconds = Math.max(0, parseInt(stored) - elapsed);
             } else {
                 localStorage.setItem('qbits_panaderia_countdown', totalSeconds);
                 localStorage.setItem('qbits_panaderia_countdown_time', Date.now());
+                localStorage.setItem('qbits_panaderia_countdown_ver', TIMER_VERSION);
             }
             
             function updateDisplay() {
